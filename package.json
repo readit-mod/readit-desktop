@@ -1,0 +1,37 @@
+{
+  "name": "readit-desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "pnpm compile && pnpm package",
+    "compile": "node scripts/build.js",
+    "package": "pnpm electron --win --x64",
+    "start": "pnpm compile && electron ."
+  },
+  "keywords": [],
+  "author": "tralwdwd",
+  "license": "ISC",
+  "build": {
+    "appId": "dev.tralwdwd.readit",
+    "productName": "ReadIt",
+    "files": [
+      "dist/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    }
+  },
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "@types/node": "^24.8.0",
+    "electron": "^38.3.0",
+    "electron-builder": "^26.0.12",
+    "electron-packager": "^17.1.2",
+    "electron-winstaller": "^5.4.0",
+    "esbuild": "^0.25.11",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  }
+}
