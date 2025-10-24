@@ -1,7 +1,7 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
-import https from "https";
 import { registerHandlers } from "@/main/handlers";
+import { loadReadItBundle } from "@/main/loader";
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -19,20 +19,7 @@ function createWindow() {
     win.loadURL("https://reddit.com");
 
     win.webContents.on("did-finish-load", () => {
-        let url = "https://storage.tralwdwd.dev/readit.bundle.js";
-
-        https.get(url, (res) => {
-            let data = "";
-
-            res.on("data", (chunk) => (data += chunk));
-            res.on("end", async () => {
-                try {
-                    await win.webContents.executeJavaScript(data);
-                } catch {
-                    console.log("Load failed.");
-                }
-            });
-        });
+        loadReadItBundle(win);
     });
 }
 

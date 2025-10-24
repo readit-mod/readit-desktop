@@ -1,22 +1,5 @@
 import { ipcMain } from "electron";
-import fs from "fs";
-import path from "path";
-import { app } from "electron";
-
-const storePath = path.join(app.getPath("userData"), "readit-store.json");
-
-function readStore() {
-    if (!fs.existsSync(storePath)) return {};
-    try {
-        return JSON.parse(fs.readFileSync(storePath, "utf-8"));
-    } catch {
-        return {};
-    }
-}
-
-function writeStore(obj: any) {
-    fs.writeFileSync(storePath, JSON.stringify(obj, null, 2));
-}
+import { writeStore, readStore } from "@/lib/common/storage";
 
 export function registerStoreHandlers() {
     ipcMain.handle("native:getAllValues", () => readStore());
