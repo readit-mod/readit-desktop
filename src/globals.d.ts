@@ -12,6 +12,7 @@ type ReadItNative = {
     network: NetworkNative;
     logging: LogNative;
     bundle: BundleNative;
+    polyfills?: Polyfill[];
 };
 
 type LogNative = {
@@ -32,6 +33,11 @@ type BundleNative = {
     setBundleURL: (url: string) => Promise<boolean>;
     getBundleURL: () => Promise<string>;
     resetBundleURL: () => Promise<boolean>;
+};
+
+type Polyfill = {
+    object: string;
+    replacements: Record<string, any>;
 };
 
 type RequestOptions = {

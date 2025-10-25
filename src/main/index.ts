@@ -14,12 +14,19 @@ function createWindow() {
         },
     });
 
-    registerHandlers();
-
+    registerHandlers(win);
     win.loadURL("https://reddit.com");
+
+    ipcMain.on("retry-load", (_) => {
+        win.loadURL("https://reddit.com");
+    });
 
     win.webContents.on("did-finish-load", () => {
         loadReadItBundle(win);
+    });
+
+    win.webContents.on("did-fail-load", () => {
+        win.loadURL("https://storage.tralwdwd.dev/fallback.html");
     });
 }
 
