@@ -1,2 +1,2 @@
 export const DEFAULT_BUNDLE_URL =
-    "http://storage.tralwdwd.dev/readit.bundle.js";
+    "https://github.com/readit-mod/readit/releases/latest/download/readit.bundle.js";
