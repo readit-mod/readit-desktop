@@ -57,6 +57,10 @@ type RequestReturn = {
     };
 };
 
+type BundleManifest = {
+    version: string;
+};
+
 type ReadItMeta = {
     loaderVersion: string;
     platform: string;
