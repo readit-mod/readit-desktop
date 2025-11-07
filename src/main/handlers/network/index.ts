@@ -1,8 +1,9 @@
+import { IPCEvents } from "@lib/common/ipc";
 import { ipcMain } from "electron";
 
 export function registerNetworkHandlers() {
     ipcMain.handle(
-        "native:xmlhttpRequest",
+        IPCEvents.XMLHTTPRequest,
         async (_, details: RequestOptions) => {
             try {
                 const req = await fetch(details.url, {

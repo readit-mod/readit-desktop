@@ -1,7 +1,7 @@
-import { ipcRenderer } from "electron";
+import { invoke, IPCEvents } from "@lib/common/ipc";
 
 export async function promptPolyfill(message: string, defaultValue = "") {
-    return await ipcRenderer.invoke("native:prompt", {
+    return await invoke<Promise<string | null>>(IPCEvents.Prompt, {
         message,
         defaultValue,
     });

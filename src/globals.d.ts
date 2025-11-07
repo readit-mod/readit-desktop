@@ -1,11 +1,3 @@
-declare global {
-    interface Window {
-        electronAPI: {
-            ping: () => Promise<{ ok: boolean; time: number }>;
-        };
-    }
-}
-
 type ReadItNative = {
     meta: ReadItMeta;
     storage: StorageNative;
@@ -30,9 +22,9 @@ type NetworkNative = {
 };
 
 type BundleNative = {
-    setBundleURL: (url: string) => Promise<boolean>;
-    getBundleURL: () => Promise<string>;
-    resetBundleURL: () => Promise<boolean>;
+    setBundleManifest: (url: string) => Promise<boolean>;
+    getBundleManifest: () => Promise<string>;
+    resetBundleManifest: () => Promise<boolean>;
 };
 
 type Polyfill = {

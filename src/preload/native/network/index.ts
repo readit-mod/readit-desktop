@@ -1,9 +1,13 @@
+import { invoke, IPCEvents } from "@lib/common/ipc";
 import { ipcRenderer } from "electron";
 
 export default {
     network: {
         async xmlHttpRequest(options) {
-            return ipcRenderer.invoke("native:xmlhttpRequest", options);
+            return invoke<RequestReturn | null>(
+                IPCEvents.XMLHTTPRequest,
+                options,
+            );
         },
-    } as NetworkNative,
+    } satisfies NetworkNative,
 };

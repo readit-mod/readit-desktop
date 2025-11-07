@@ -1,9 +1,9 @@
-import { ipcRenderer } from "electron";
+import { invoke, IPCEvents } from "@lib/common/ipc";
 
 export default {
     logging: {
         async log(log) {
-            ipcRenderer.invoke("native:log", log);
+            invoke<void>(IPCEvents.Log, log);
         },
-    } as LogNative,
+    } satisfies LogNative,
 };

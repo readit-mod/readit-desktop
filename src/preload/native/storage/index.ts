@@ -1,15 +1,15 @@
-import { ipcRenderer } from "electron";
+import { invoke, IPCEvents } from "@lib/common/ipc";
 
 export default {
     storage: {
-        async getValue(key, def) {
-            return ipcRenderer.invoke("native:getValue", key, def);
+        async getValue<T = unknown>(key: string, def: T | undefined) {
+            return invoke<T>(IPCEvents.GetStorageValue, key, def);
         },
-        async setValue(key, value) {
-            return ipcRenderer.invoke("native:setValue", key, value);
+        async setValue<T>(key: string, value: T) {
+            return invoke<boolean>(IPCEvents.SetStorageValue, key, value);
         },
         async getAll() {
-            return ipcRenderer.invoke("native:getAllValues");
+            return invoke<Record<string, any>>(IPCEvents.GetAllStorageValues);
         },
-    } as StorageNative,
+    } satisfies StorageNative,
 };

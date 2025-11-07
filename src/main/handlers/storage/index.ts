@@ -1,15 +1,16 @@
 import { ipcMain } from "electron";
 import { writeStore, readStore } from "@lib/common/storage";
+import { IPCEvents } from "@lib/common/ipc";
 
 export function registerStoreHandlers() {
-    ipcMain.handle("native:getAllValues", () => readStore());
+    ipcMain.handle(IPCEvents.GetAllStorageValues, () => readStore());
 
-    ipcMain.handle("native:getValue", (_, key: string, def?: any) => {
+    ipcMain.handle(IPCEvents.GetStorageValue, (_, key: string, def?: any) => {
         const store = readStore();
         return key in store ? store[key] : def;
     });
 
-    ipcMain.handle("native:setValue", (_, key: string, val: any) => {
+    ipcMain.handle(IPCEvents.SetStorageValue, (_, key: string, val: any) => {
         const store = readStore();
         store[key] = val;
         writeStore(store);

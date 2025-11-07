@@ -1,15 +1,15 @@
-import { ipcRenderer } from "electron";
+import { invoke, IPCEvents } from "@lib/common/ipc";
 
 export default {
     bundle: {
-        async setBundleURL(url) {
-            return await ipcRenderer.invoke("native:setBundleURL", url);
+        async setBundleManifest(url) {
+            return await invoke<boolean>(IPCEvents.SetBundleManifest, url);
         },
-        async getBundleURL() {
-            return await ipcRenderer.invoke("native:getBundleURL");
+        async getBundleManifest() {
+            return await invoke<string>(IPCEvents.GetBundleManifest);
         },
-        async resetBundleURL() {
-            return await ipcRenderer.invoke("native:resetrBundleURL");
+        async resetBundleManifest() {
+            return await invoke<boolean>(IPCEvents.ResetBundleManifest);
         },
-    } as BundleNative,
+    } satisfies BundleNative,
 };

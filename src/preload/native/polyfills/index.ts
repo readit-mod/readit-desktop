@@ -8,5 +8,5 @@ export default {
                 prompt: promptPolyfill,
             },
         },
-    ] as Polyfill[],
+    ] satisfies Polyfill[],
 };
