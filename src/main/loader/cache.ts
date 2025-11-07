@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 import { app } from "electron";
-import { getRemoteManifest } from "@/main/loader/manifest";
-import { DEFAULT_BUNDLE_URL } from "@/lib/constants";
-import { logging } from "@/lib/native/logging";
+import { getRemoteManifest } from "@main/loader/manifest";
+import { DEFAULT_BUNDLE_URL } from "@lib/constants";
+import { logging } from "@lib/native/logging";
 
 let cachedBundleLocation = path.join(
     app.getPath("appData"),

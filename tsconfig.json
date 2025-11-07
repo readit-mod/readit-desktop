@@ -5,7 +5,11 @@
     "outDir": "dist",
     "rootDir": "src",
     "paths": {
-      "@/*": ["./src/*"]
+        "@main/*": ["./src/main/*"],
+        "@preload/*": ["./src/preload/*"],
+        "@utils/*": ["./src/utils/*"],
+        "@lib/*": ["./src/lib/*"],
+        "@/*": ["./*"]
     },
     "strict": true,
     "esModuleInterop": true,

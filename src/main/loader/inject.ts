@@ -1,5 +1,5 @@
 import type { BrowserWindow } from "electron";
-import { logging } from "@/lib/native/logging";
+import { logging } from "@lib/native/logging";
 
 export function injectReadItBundle(bundle: string, win: BrowserWindow) {
     try {

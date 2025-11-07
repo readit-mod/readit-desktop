@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
-import { registerHandlers } from "@/main/handlers";
-import { loadReadItBundle } from "@/main/loader";
+import { registerHandlers } from "@main/handlers";
+import { loadReadItBundle } from "@main/loader";
 
 function createWindow() {
     const win = new BrowserWindow({

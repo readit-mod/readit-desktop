@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { join, dirname } from "path";
-import { formatDate } from "@/utils/format";
+import { formatDate } from "@utils/format";
 import { app } from "electron";
 
 const logPath = join(

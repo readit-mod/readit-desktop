@@ -1,4 +1,4 @@
-import { writeStore, readStore } from "@/lib/common/storage";
+import { writeStore, readStore } from "@lib/common/storage";
 
 export const storage = {
     get<T>(key: string, def: T): T {

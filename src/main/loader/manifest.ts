@@ -1,8 +1,8 @@
 import path from "path";
 import { app } from "electron";
 import fs from "fs";
-import { storage } from "@/lib/native/storage";
-import { DEFAULT_MANIFEST_URL } from "@/lib/constants";
+import { storage } from "@lib/native/storage";
+import { DEFAULT_MANIFEST_URL } from "@lib/constants";
 
 export async function needsUpdate(): Promise<boolean> {
     let cached = getCachedManifest();

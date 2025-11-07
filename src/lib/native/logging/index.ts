@@ -1,4 +1,4 @@
-import { writeLogEntry } from "@/lib/common/logging";
+import { writeLogEntry } from "@lib/common/logging";
 
 export const logging = {
     info(...message: unknown[]) {

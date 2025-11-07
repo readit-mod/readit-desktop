@@ -1,8 +1,8 @@
 import type { BrowserWindow } from "electron";
-import { logging } from "@/lib/native/logging";
-import { needsUpdate } from "@/main/loader/manifest";
-import { getCachedBundle, getRemoteBundle } from "@/main/loader/cache";
-import { injectReadItBundle } from "@/main/loader/inject";
+import { logging } from "@lib/native/logging";
+import { needsUpdate } from "@main/loader/manifest";
+import { getCachedBundle, getRemoteBundle } from "@main/loader/cache";
+import { injectReadItBundle } from "@main/loader/inject";
 
 export async function loadReadItBundle(win: BrowserWindow) {
     let shouldUpdate = await needsUpdate();

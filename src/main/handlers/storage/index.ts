@@ -1,5 +1,5 @@
 import { ipcMain } from "electron";
-import { writeStore, readStore } from "@/lib/common/storage";
+import { writeStore, readStore } from "@lib/common/storage";
 
 export function registerStoreHandlers() {
     ipcMain.handle("native:getAllValues", () => readStore());

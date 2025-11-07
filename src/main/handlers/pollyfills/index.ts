@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain } from "electron";
-import { openPromptWindow } from "@/main/handlers/pollyfills/prompt";
+import { openPromptWindow } from "@main/handlers/pollyfills/prompt";
 
 export function registerNativePolyfills(mainWindow: BrowserWindow) {
     ipcMain.handle(

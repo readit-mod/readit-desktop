@@ -1,6 +1,6 @@
 import { ipcMain } from "electron";
-import { storage } from "@/lib/native/storage";
-import { DEFAULT_BUNDLE_URL } from "@/lib/constants";
+import { storage } from "@lib/native/storage";
+import { DEFAULT_BUNDLE_URL } from "@lib/constants";
 
 export function registerBundleHandlers() {
     ipcMain.handle("native:setBundleURL", (_, url: string) => {
