@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 import { app } from "electron";
-import { getRemoteManifest } from "@main/loader/manifest";
-import { DEFAULT_BUNDLE_URL } from "@lib/constants";
+import { fetchRemoteManifest } from "@main/loader/manifest";
 import { logging } from "@lib/native/logging";
+import { fetchRemoteBundle } from "@main/loader/bundle";
 
 let cachedBundleLocation = path.join(
     app.getPath("appData"),
@@ -22,9 +22,9 @@ export function getCachedBundle(): string {
 }
 
 export async function getRemoteBundle(): Promise<string> {
-    let manifestToCache = await getRemoteManifest();
+    let manifestToCache = await fetchRemoteManifest();
     fs.writeFileSync(cachedManifestLocation, JSON.stringify(manifestToCache));
-    let bundleToCache = await (await fetch(DEFAULT_BUNDLE_URL)).text();
+    let bundleToCache = await fetchRemoteBundle();
     fs.writeFileSync(cachedBundleLocation, bundleToCache);
 
     logging.info("Updated successfully.");

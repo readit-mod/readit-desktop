@@ -8,7 +8,7 @@ export async function needsUpdate(): Promise<boolean> {
     let cached = getCachedManifest();
     if (!cached) return true;
 
-    let remote = await getRemoteManifest();
+    let remote = await fetchRemoteManifest();
 
     return cached?.version != remote.version;
 }
@@ -23,7 +23,7 @@ function getCachedManifest(): BundleManifest | null {
     return JSON.parse(fs.readFileSync(cachedManifest, "utf-8"));
 }
 
-export async function getRemoteManifest(): Promise<BundleManifest> {
+export async function fetchRemoteManifest(): Promise<BundleManifest> {
     let url = storage.get("ReadItManifestURL", DEFAULT_MANIFEST_URL);
     let res = await fetch(url);
 
