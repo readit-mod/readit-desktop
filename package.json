@@ -31,5 +31,9 @@
     "esbuild": "^0.25.11",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "appdata-path": "^1.0.0",
+    "w3c-xmlhttprequest": "^3.0.4"
   }
 }

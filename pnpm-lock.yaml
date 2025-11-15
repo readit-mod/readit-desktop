@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      appdata-path:
+        specifier: ^1.0.0
+        version: 1.0.0
+      w3c-xmlhttprequest:
+        specifier: ^3.0.4
+        version: 3.0.4
     devDependencies:
       '@types/node':
         specifier: ^24.8.0
@@ -379,6 +386,9 @@ packages:
     peerDependencies:
       dmg-builder: 26.0.12
       electron-builder-squirrel-windows: 26.0.12
+
+  appdata-path@1.0.0:
+    resolution: {integrity: sha512-ZbH3ezXfnT/YE3NdqduIt4lBV+H0ybvA2Qx3K76gIjQvh8gROpDFdDLpx6B1QJtW7zxisCbpTlCLhKqoR8cDBw==}
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
@@ -1412,6 +1422,10 @@ packages:
     resolution: {integrity: sha512-veufcmxri4e3XSrT0xwfUR7kguIkaxBeosDg00yDWhk49wdwkSUrvvsm7nc75e1PUyvIeZj6nS8VQRYz2/S4Xg==}
     engines: {node: '>=0.6.0'}
 
+  w3c-xmlhttprequest@3.0.4:
+    resolution: {integrity: sha512-GOR3PNrFVioJtxb+VR1kp80+UM89ga85akLRYVZX7fmaQTn/kkj9Q18MhNoGtvRJ2ez5i77EpQ0hNBB7+e/RBg==}
+    engines: {node: '>= 10.13.0'}
+
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
 
@@ -1838,6 +1852,8 @@ snapshots:
     transitivePeerDependencies:
       - bluebird
       - supports-color
+
+  appdata-path@1.0.0: {}
 
   argparse@2.0.1: {}
 
@@ -3009,6 +3025,8 @@ snapshots:
       core-util-is: 1.0.2
       extsprintf: 1.4.1
     optional: true
+
+  w3c-xmlhttprequest@3.0.4: {}
 
   wcwidth@1.0.1:
     dependencies:

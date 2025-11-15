@@ -11,4 +11,7 @@ export const storage = {
         writeStore(store);
         return true;
     },
+    all(): Record<string, unknown> {
+        return readStore();
+    },
 };

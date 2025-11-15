@@ -12,13 +12,14 @@ type LogNative = {
 };
 
 type StorageNative = {
-    getValue: <T = unknown>(key: string, def?: T) => Promise<T>;
-    setValue: <T = unknown>(key: string, value: T) => Promise<boolean>;
-    getAll: () => Promise<Record<string, any>>;
+    getValue: <T = unknown>(key: string, def?: T) => T;
+    setValue: <T = unknown>(key: string, value: T) => boolean;
+    getAll: () => Record<string, unknown>;
 };
 
 type NetworkNative = {
-    xmlHttpRequest: (options: RequestOptions) => Promise<RequestReturn | null>;
+    XMLHttpRequest: typeof import("w3c-xmlhttprequest").XMLHttpRequest;
+    fetch: typeof fetch;
 };
 
 type BundleNative = {

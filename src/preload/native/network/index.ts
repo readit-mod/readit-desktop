@@ -1,13 +1,8 @@
-import { invoke, IPCEvents } from "@lib/common/ipc";
-import { ipcRenderer } from "electron";
+import { XMLHttpRequest } from "w3c-xmlhttprequest";
 
 export default {
     network: {
-        async xmlHttpRequest(options) {
-            return invoke<RequestReturn | null>(
-                IPCEvents.XMLHTTPRequest,
-                options,
-            );
-        },
+        XMLHttpRequest,
+        fetch,
     } satisfies NetworkNative,
 };

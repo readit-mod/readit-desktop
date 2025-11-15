@@ -1,21 +1,13 @@
 import fs from "fs";
 import path from "path";
-import { app } from "electron";
 import { fetchRemoteManifest } from "@main/loader/manifest";
 import { logging } from "@lib/native/logging";
 import { fetchRemoteBundle } from "@main/loader/bundle";
+import { appDataPath } from "@lib/common/path";
 
-let cachedBundleLocation = path.join(
-    app.getPath("appData"),
-    "cache",
-    "readit.bundle.js",
-);
+let cachedBundleLocation = path.join(appDataPath, "cache", "readit.bundle.js");
 
-let cachedManifestLocation = path.join(
-    app.getPath("appData"),
-    "cache",
-    "manifest.json",
-);
+let cachedManifestLocation = path.join(appDataPath, "cache", "manifest.json");
 
 export function getCachedBundle(): string {
     return fs.readFileSync(cachedBundleLocation, "utf-8");
