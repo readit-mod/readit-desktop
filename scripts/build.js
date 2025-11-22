@@ -3,6 +3,7 @@
 const esbuild = require("esbuild");
 const path = require("path");
 const fs = require("fs");
+const { builtinModules } = require("module");
 
 const watch = process.argv.includes("watch");
 
@@ -15,7 +16,6 @@ const common = {
     minify: false,
     sourcemap: false,
     platform: "node",
-    external: ["electron"],
 };
 
 esbuild
@@ -23,6 +23,7 @@ esbuild
         ...common,
         entryPoints: [path.resolve(__dirname, "../src/main/index.ts")],
         outfile: path.join(outDir, "main.js"),
+        external: ["electron"]
     })
     .then(() => console.log("Main process built"));
 
@@ -32,6 +33,10 @@ esbuild
         entryPoints: [path.resolve(__dirname, "../src/preload/index.ts")],
         outfile: path.join(outDir, "preload.js"),
         format: "cjs",
+        external: [
+            ...builtinModules,
+            "electron"
+        ],
         define: {
             "process.env.NODE_ENV": JSON.stringify(
                 process.env.NODE_ENV || "development",

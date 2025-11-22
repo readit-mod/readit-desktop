@@ -8,10 +8,6 @@ export enum IPCEvents {
     SetBundleManifest = "native:setManifestURL",
     GetBundleManifest = "native:getManifestURL",
     ResetBundleManifest = "native:resetManifestURL",
-    Log = "native:log",
-    XMLHTTPRequest = "native:xmlHttpRequest",
     Prompt = "native:prompt",
-    GetStorageValue = "native:getValue",
-    SetStorageValue = "native:setValue",
-    GetAllStorageValues = "native:getAllValues",
+    DownloadURL = "native:downloadUrl",
 }
