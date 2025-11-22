@@ -18,7 +18,6 @@ type StorageNative = {
 };
 
 type NetworkNative = {
-    XMLHttpRequest: typeof import("w3c-xmlhttprequest").XMLHttpRequest;
     fetch: typeof fetch;
 };
 
