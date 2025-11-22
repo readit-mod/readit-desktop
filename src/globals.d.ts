@@ -18,7 +18,6 @@ type StorageNative = {
 };
 
 type NetworkNative = {
-    fetch: typeof fetch;
     downloadUrl: (options: DownloadOptions) => Promise<void>;
 };
 

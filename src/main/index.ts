@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
 import { registerHandlers } from "@main/handlers";
 import { loadReadItBundle } from "@main/loader";
+import { disableCsp } from "@lib/csp";
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -10,11 +11,14 @@ function createWindow() {
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
             contextIsolation: true,
-            nodeIntegration: true,
+            nodeIntegration: false,
+            sandbox: false,
         },
     });
 
     registerHandlers(win);
+
+    disableCsp(win);
     win.loadURL("https://reddit.com");
 
     ipcMain.on("retry-load", (_) => {
