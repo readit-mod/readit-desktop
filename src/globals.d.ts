@@ -19,6 +19,20 @@ type StorageNative = {
 
 type NetworkNative = {
     fetch: typeof fetch;
+    downloadUrl: (options: DownloadOptions) => Promise<void>;
+};
+
+type DownloadOptions = {
+    url: string;
+    title?: string;
+    message?: string;
+    buttonLabel?: string;
+    filters?: DownloadFilter[];
+};
+
+type DownloadFilter = {
+    name: string;
+    extensions: string[];
 };
 
 type BundleNative = {

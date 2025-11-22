@@ -9,4 +9,5 @@ export enum IPCEvents {
     GetBundleManifest = "native:getManifestURL",
     ResetBundleManifest = "native:resetManifestURL",
     Prompt = "native:prompt",
+    DownloadURL = "native:downloadUrl",
 }
