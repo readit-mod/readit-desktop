@@ -3,6 +3,7 @@ import fs from "fs";
 import { storage } from "@lib/native/storage";
 import { DEFAULT_MANIFEST_URL } from "@lib/constants";
 import { appDataPath } from "@lib/common/path";
+import { fetchCatching } from "@main/loader/network";
 
 export async function needsUpdate(): Promise<boolean> {
     let cached = getCachedManifest();
@@ -24,8 +25,9 @@ function getCachedManifest(): BundleManifest | null {
 }
 
 export async function fetchRemoteManifest(): Promise<BundleManifest> {
-    let url = storage.get("ReadItManifestURL", DEFAULT_MANIFEST_URL);
-    let res = await fetch(url);
+    const url = storage.get("ReadItManifestURL", DEFAULT_MANIFEST_URL);
 
-    return JSON.parse(await res.text());
+    const text = await fetchCatching(url);
+
+    return JSON.parse(text) as BundleManifest;
 }

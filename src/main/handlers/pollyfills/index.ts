@@ -1,12 +1,12 @@
-import { BrowserWindow, ipcMain } from "electron";
+import { ipcMain } from "electron";
 import { openPromptWindow } from "@main/handlers/pollyfills/prompt";
 import { IPCEvents } from "@lib/common/ipc";
 
-export function registerNativePolyfills(mainWindow: BrowserWindow) {
+export function registerNativePolyfills() {
     ipcMain.handle(
         IPCEvents.Prompt,
         async (_event, { message, defaultValue }) => {
-            return await openPromptWindow(mainWindow, message, defaultValue);
+            return await openPromptWindow(message, defaultValue);
         },
     );
 }

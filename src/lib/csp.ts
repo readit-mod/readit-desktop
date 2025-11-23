@@ -1,6 +1,7 @@
-import type { BrowserWindow } from "electron";
+import { getMainWindow } from "./main/win";
 
-export function disableCsp(win: BrowserWindow) {
+export function disableCsp() {
+    const win = getMainWindow();
     const ses = win.webContents.session;
 
     ses.webRequest.onHeadersReceived(

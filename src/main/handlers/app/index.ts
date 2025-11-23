@@ -1,8 +1,9 @@
 import { IPCEvents } from "@lib/common/ipc";
-import { BrowserWindow, ipcMain } from "electron";
+import { getMainWindow } from "@lib/main/win";
+import { ipcMain } from "electron";
 
-export function registerAppHandlers(win: BrowserWindow) {
+export function registerAppHandlers() {
     ipcMain.handle(IPCEvents.OpenDevtools, (_) => {
-        win.webContents.openDevTools();
+        getMainWindow().webContents.openDevTools();
     });
 }

@@ -1,7 +1,7 @@
+import { getMainWindow } from "@lib/main/win";
 import { BrowserWindow, ipcMain } from "electron";
 
 export async function openPromptWindow(
-    parent: BrowserWindow,
     message: string,
     defaultValue?: string,
 ): Promise<string | null> {
@@ -13,7 +13,7 @@ export async function openPromptWindow(
             minimizable: false,
             maximizable: false,
             modal: true,
-            parent,
+            parent: getMainWindow(),
             show: false,
             frame: false,
             alwaysOnTop: true,
@@ -84,7 +84,7 @@ export async function openPromptWindow(
 
         ipcMain.on("native:prompt:response", responseHandler);
 
-        parent.on("closed", () => {
+        getMainWindow().on("closed", () => {
             if (!win.isDestroyed()) win.close();
         });
 

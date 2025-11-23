@@ -1,6 +1,8 @@
-import { BrowserWindow, dialog } from "electron";
+import { getMainWindow } from "@lib/main/win";
+import { dialog } from "electron";
 
-export function downloadURL(win: BrowserWindow, options: DownloadOptions) {
+export function downloadURL(options: DownloadOptions) {
+    const win = getMainWindow();
     let save = dialog.showSaveDialogSync(win, {
         title: options.title,
         defaultPath: options.name,

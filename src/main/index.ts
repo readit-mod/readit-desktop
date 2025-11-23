@@ -3,6 +3,7 @@ import path from "path";
 import { registerHandlers } from "@main/handlers";
 import { loadReadItBundle } from "@main/loader";
 import { disableCsp } from "@lib/csp";
+import { setMainWindow } from "@lib/main/win";
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -16,9 +17,11 @@ function createWindow() {
         },
     });
 
-    registerHandlers(win);
+    setMainWindow(win);
 
-    disableCsp(win);
+    registerHandlers();
+
+    disableCsp();
     win.loadURL("https://reddit.com");
 
     ipcMain.on("retry-load", (_) => {
@@ -26,7 +29,7 @@ function createWindow() {
     });
 
     win.webContents.on("did-finish-load", () => {
-        loadReadItBundle(win);
+        loadReadItBundle();
     });
 
     win.webContents.on("did-fail-load", () => {

@@ -1,9 +1,9 @@
 import { IPCEvents } from "@lib/common/ipc";
-import { BrowserWindow, ipcMain } from "electron";
+import { ipcMain } from "electron";
 import { downloadURL } from "./download";
 
-export function registerNetworkHandlers(win: BrowserWindow) {
+export function registerNetworkHandlers() {
     ipcMain.handle(IPCEvents.DownloadURL, (_, options) => {
-        return downloadURL(win, options);
+        return downloadURL(options);
     });
 }

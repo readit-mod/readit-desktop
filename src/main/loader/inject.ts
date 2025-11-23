@@ -1,10 +1,10 @@
-import type { BrowserWindow } from "electron";
-import { logging } from "@lib/native/logging";
+import { loaderError } from "@main/loader/error";
+import { getMainWindow } from "@lib/main/win";
 
-export function injectReadItBundle(bundle: string, win: BrowserWindow) {
+export function injectReadItBundle(bundle: string) {
     try {
-        win.webContents.executeJavaScript(bundle);
+        getMainWindow().webContents.executeJavaScript(bundle);
     } catch (e) {
-        logging.error("An error occured while loading ReadIt. ", e);
+        loaderError("bundle", e);
     }
 }
