@@ -1,9 +1,9 @@
-import { invoke, IPCEvents } from "@lib/common/ipc";
+import { writeLogEntry } from "@lib/common/logging";
 
 export default {
     logging: {
         async log(log) {
-            invoke<void>(IPCEvents.Log, log);
+            writeLogEntry(log);
         },
     } satisfies LogNative,
 };

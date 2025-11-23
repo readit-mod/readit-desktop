@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
-import { app } from "electron";
+import { appDataPath } from "@lib/common/path";
 
-const storePath = path.join(app.getPath("userData"), "readit-store.json");
+const storePath = path.join(appDataPath, "readit-store.json");
 
 export function readStore() {
     if (!fs.existsSync(storePath)) return {};

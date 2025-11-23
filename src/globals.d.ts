@@ -12,13 +12,27 @@ type LogNative = {
 };
 
 type StorageNative = {
-    getValue: <T = unknown>(key: string, def?: T) => Promise<T>;
-    setValue: <T = unknown>(key: string, value: T) => Promise<boolean>;
-    getAll: () => Promise<Record<string, any>>;
+    getValue: <T = unknown>(key: string, def?: T) => T;
+    setValue: <T = unknown>(key: string, value: T) => boolean;
+    getAll: () => Record<string, unknown>;
 };
 
 type NetworkNative = {
-    xmlHttpRequest: (options: RequestOptions) => Promise<RequestReturn | null>;
+    downloadUrl: (options: DownloadOptions) => Promise<void>;
+};
+
+type DownloadOptions = {
+    url: string;
+    title?: string;
+    name?: string;
+    message?: string;
+    buttonLabel?: string;
+    filters?: DownloadFilter[];
+};
+
+type DownloadFilter = {
+    name: string;
+    extensions: string[];
 };
 
 type BundleNative = {

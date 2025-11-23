@@ -1,15 +1,15 @@
-import { invoke, IPCEvents } from "@lib/common/ipc";
+import { storage } from "@lib/native/storage";
 
 export default {
     storage: {
-        async getValue<T = unknown>(key: string, def: T | undefined) {
-            return invoke<T>(IPCEvents.GetStorageValue, key, def);
+        getValue<T = unknown>(key: string, def: T | undefined) {
+            return storage.get<T>(key, def!);
         },
-        async setValue<T>(key: string, value: T) {
-            return invoke<boolean>(IPCEvents.SetStorageValue, key, value);
+        setValue<T>(key: string, value: T) {
+            return storage.set<T>(key, value);
         },
-        async getAll() {
-            return invoke<Record<string, any>>(IPCEvents.GetAllStorageValues);
+        getAll() {
+            return storage.all();
         },
     } satisfies StorageNative,
 };
