@@ -24,6 +24,7 @@ type NetworkNative = {
 type DownloadOptions = {
     url: string;
     title?: string;
+    name?: string;
     message?: string;
     buttonLabel?: string;
     filters?: DownloadFilter[];
